@@ -1,0 +1,119 @@
+/* Minimal light theme. Everything is sized so that the page at 100% zoom
+   reads at roughly the scale of a default browser page at 200%. */
+
+html {
+  font-size: 20px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: #ffffff;
+  color: #000000;
+  font-family: Times, "Times New Roman", Georgia, serif;
+  font-size: 1.3rem;      /* 26px */
+  line-height: 1.45;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: #0b41cd;
+  text-decoration: underline;
+}
+
+a:visited {
+  color: #0b41cd;
+}
+
+/* ---------- home page ---------- */
+
+.home {
+  text-align: right;
+  padding: 5rem 3.25rem 4rem;   /* 100px top, 65px right */
+  font-size: 1.6rem;            /* 32px */
+  line-height: 1.15;
+}
+
+.home .name {
+  margin: 0;
+  font-size: 1em;
+  font-weight: normal;
+}
+
+.home ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* ---------- interior pages ---------- */
+
+.page {
+  max-width: 34rem;             /* ~680px of measure */
+  margin: 0 auto;
+  padding: 4rem 1.75rem 6rem;
+}
+
+.masthead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 2.25rem;
+}
+
+.masthead h1 {
+  font-size: 2.4rem;            /* 48px */
+  font-weight: bold;
+  margin: 0;
+  line-height: 1.1;
+}
+
+.masthead .home-link {
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+p {
+  margin: 0 0 1.4rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 2.4rem 0 1rem;
+}
+
+ul, ol {
+  margin: 0 0 1.4rem;
+  padding-left: 1.6rem;
+}
+
+li {
+  margin-bottom: 0.45rem;
+}
+
+.note {
+  color: #555555;
+  font-style: italic;
+}
+
+.icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  vertical-align: middle;
+  fill: #8a8a8a;
+}
+
+a.icon-link {
+  text-decoration: none;
+}
+
+/* ---------- small screens ---------- */
+
+@media (max-width: 46rem) {
+  html { font-size: 17px; }
+  .home { padding: 3rem 1.5rem; }
+  .page { padding: 2.5rem 1.25rem 4rem; }
+  .masthead { flex-wrap: wrap; gap: 0.75rem; }
+}
