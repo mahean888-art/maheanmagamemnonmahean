@@ -2,26 +2,26 @@
    a default browser page at 200%. Light by default; dark follows the viewer. */
 
 :root {
-  --bg:   #ffffff;
-  --fg:   #000000;
-  --link: #1a53ff;
-  --icon: #8a8a8a;
+  --bg:        #fcfcfd;
+  --fg:        #1b1c1e;
+  --underline: #a8a9ad;   /* fine rule under links, not a second colour */
+  --muted:     #8a8b8f;
 }
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg:   #0f1012;
-    --fg:   #e7e9ec;
-    --link: #6ea8ff;
-    --icon: #8a8a8a;
+    --bg:        #0a0a0a;   /* sampled from zainjavaid.com */
+    --fg:        #dddddd;   /* sampled: body text, and links, are this */
+    --underline: #5f6063;
+    --muted:     #85868a;
   }
 }
 
 :root[data-theme="dark"] {
-  --bg:   #0f1012;
-  --fg:   #e7e9ec;
-  --link: #6ea8ff;
-  --icon: #8a8a8a;
+  --bg:        #0a0a0a;
+  --fg:        #dddddd;
+  --underline: #5f6063;
+  --muted:     #85868a;
 }
 
 html {
@@ -32,11 +32,14 @@ html {
 body {
   background: var(--bg);
   color: var(--fg);
-  font-family: Helvetica, "Helvetica Neue", Arial, sans-serif;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI",
+               Helvetica, Arial, sans-serif;
+  letter-spacing: -0.011em;
+  -webkit-font-smoothing: antialiased;
   font-size: 1rem;                /* 19px */
   line-height: 1.6;               /* 30.4px between lines */
   margin: 0;
-  padding: 60px 40px 60px 20px;
+  padding: 100px clamp(24px, 4vw, 56px) 120px clamp(24px, 7vw, 112px);
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -44,12 +47,26 @@ body {
 }
 
 a {
-  color: var(--link);
+  color: var(--fg);                      /* links read as text, not as blue */
   text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-decoration-color: var(--underline);
+  text-underline-offset: 0.18em;
+  transition: text-decoration-color 120ms ease;
 }
 
 a:visited {
-  color: var(--link);
+  color: var(--fg);
+}
+
+a:hover,
+a:focus-visible {
+  text-decoration-color: var(--fg);
+}
+
+a:focus-visible {
+  outline: 1px solid var(--fg);
+  outline-offset: 3px;
 }
 
 /* ---------- persistent index, right-hand side of every page ---------- */
@@ -66,6 +83,7 @@ nav .name {
   display: block;
   color: var(--fg);
   text-decoration: none;
+  margin-bottom: 0.5rem;
 }
 
 nav ul {
@@ -116,7 +134,7 @@ li {
   width: 1.5rem;
   height: 1.5rem;
   vertical-align: middle;
-  fill: var(--icon);
+  fill: var(--muted);
 }
 
 a.icon-link {
